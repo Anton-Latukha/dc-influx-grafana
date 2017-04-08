@@ -1,0 +1,27 @@
+# InfluxDB Compose-file
+# Maintainer: anton.latukha+github@gmail.com
+
+version: '2'
+
+services:
+
+  influxDB:
+    image: influxdb
+#    image: tutum/influxdb
+    volumes:
+      - influxBD:/var/lib/influxdb
+#      - influxDB:/data
+    ports:
+      - 8083:8083
+      - 8086:8086
+
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - grafana:/var/lib/grafana
+    ports:
+      - 3000:3000
+  
+volumes:
+  influxDB:
+  grafana:
